@@ -1,0 +1,164 @@
+metadata:
+  name: Daily Circadian, Wake & Sleep Routine v2
+  description: Automatically shifts color temperatures and brightness across the day with gradual wake and sleep transitions.
+
+automations:
+  # 1. Wake Mode (Gradual sunrise effect)
+  - name: Morning Wake
+    starters:
+      - type: time.schedule
+        at: 06:00:00
+    condition:
+      type: home.state.HomePresence
+      state: homePresenceMode
+      is: HOME
+    actions:
+      - type: device.command.LightEffectWake
+        devices:
+          [
+            Bedroom lamp - Bedroom,
+            Office lamp - Office,
+            Living Room floor lamp - Living Room,
+            Living Room table lamp - Living Room,
+          ]
+        duration: 30min
+
+  # 2. Daytime Focus (Balanced neutral daylight)
+  - name: Daytime Focus
+    starters:
+      - type: time.schedule
+        at: 09:00:00
+    condition:
+      type: home.state.HomePresence
+      state: homePresenceMode
+      is: HOME
+    actions:
+      - type: device.command.ColorAbsolute
+        devices:
+          [
+            Bedroom lamp - Bedroom,
+            Office lamp - Office,
+            Living Room floor lamp - Living Room,
+            Living Room table lamp - Living Room,
+          ]
+        color:
+          temperature: 4200K
+      - type: device.command.BrightnessAbsolute
+        devices:
+          [
+            Bedroom lamp - Bedroom,
+            Office lamp - Office,
+            Living Room floor lamp - Living Room,
+            Living Room table lamp - Living Room,
+          ]
+        brightness: 90
+
+  # 3. Afternoon Taper (Gentle transition before dusk)
+  - name: Afternoon Taper
+    starters:
+      - type: time.schedule
+        at: 14:30:00
+    condition:
+      type: home.state.HomePresence
+      state: homePresenceMode
+      is: HOME
+    actions:
+      - type: device.command.ColorAbsolute
+        devices:
+          [
+            Bedroom lamp - Bedroom,
+            Office lamp - Office,
+            Living Room floor lamp - Living Room,
+            Living Room table lamp - Living Room,
+          ]
+        color:
+          temperature: 3800K
+      - type: device.command.BrightnessAbsolute
+        devices:
+          [
+            Bedroom lamp - Bedroom,
+            Office lamp - Office,
+            Living Room floor lamp - Living Room,
+            Living Room table lamp - Living Room,
+          ]
+        brightness: 70
+
+  # 4. Evening Wind-Down (Soft warm light)
+  - name: Evening Wind Down
+    starters:
+      - type: time.schedule
+        at: 17:30:00
+    condition:
+      type: home.state.HomePresence
+      state: homePresenceMode
+      is: HOME
+    actions:
+      - type: device.command.ColorAbsolute
+        devices:
+          [
+            Bedroom lamp - Bedroom,
+            Office lamp - Office,
+            Living Room floor lamp - Living Room,
+            Living Room table lamp - Living Room,
+          ]
+        color:
+          temperature: 2800K
+      - type: device.command.BrightnessAbsolute
+        devices:
+          [
+            Bedroom lamp - Bedroom,
+            Office lamp - Office,
+            Living Room floor lamp - Living Room,
+            Living Room table lamp - Living Room,
+          ]
+        brightness: 40
+
+  # 5. Night Relax (Low-blue candle tone before sleep routine)
+  - name: Night Relax
+    starters:
+      - type: time.schedule
+        at: 20:00:00
+    condition:
+      type: home.state.HomePresence
+      state: homePresenceMode
+      is: HOME
+    actions:
+      - type: device.command.ColorAbsolute
+        devices:
+          [
+            Bedroom lamp - Bedroom,
+            Office lamp - Office,
+            Living Room floor lamp - Living Room,
+            Living Room table lamp - Living Room,
+          ]
+        color:
+          temperature: 2200K
+      - type: device.command.BrightnessAbsolute
+        devices:
+          [
+            Bedroom lamp - Bedroom,
+            Office lamp - Office,
+            Living Room floor lamp - Living Room,
+            Living Room table lamp - Living Room,
+          ]
+        brightness: 20
+
+  # 6. Sleep Mode (Gradual dimming and warming)
+  - name: Bedtime Sleep Effect
+    starters:
+      - type: time.schedule
+        at: 21:00:00
+    condition:
+      type: home.state.HomePresence
+      state: homePresenceMode
+      is: HOME
+    actions:
+      - type: device.command.LightEffectSleep
+        devices:
+          [
+            Bedroom lamp - Bedroom,
+            Office lamp - Office,
+            Living Room floor lamp - Living Room,
+            Living Room table lamp - Living Room,
+          ]
+        duration: 30min
