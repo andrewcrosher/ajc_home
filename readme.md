@@ -28,7 +28,9 @@ Automates lighting adjustments across the day to match natural circadian rhythms
 | **21:00** | Bedtime Sleep Effect | Dynamic | 20% → 0% | `LightEffectSleep` (30 min transition) |
 
 #### Rules & Constraints
+
 * **Presence Check:** Every automation block requires `home.state.HomePresence` to be `HOME`. Scheduled state changes will not trigger or turn on lights when the house is empty.
+
 * **Target Devices:**
   * `Bedroom lamp - Bedroom`
   * `Office lamp - Office`
