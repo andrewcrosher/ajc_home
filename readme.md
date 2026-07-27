@@ -6,13 +6,13 @@ A collection of custom YAML scripts for the Google Home Script Editor ([home.goo
 
 | File | Description | Status |
 | :--- | :--- | :--- |
-| `circadian-lighting.yaml` | 6-stage time and presence-based colour temperature and brightness manager. | Active |
+| `circadian-lighting.yml` | 6-stage time and presence-based colour temperature and brightness manager. | Active |
 
 ---
 
 ## Active Scripts
 
-### 1. Circadian, Wake & Sleep Routine (`circadian-lighting.yaml`)
+### 1. Circadian, Wake & Sleep Routine (`circadian-lighting.yml`)
 
 Automates lighting adjustments across the day to match natural circadian rhythms, moving from cooler light in the morning to low-blue warm tones in the evening.
 
